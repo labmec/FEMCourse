@@ -17,12 +17,13 @@ class ReadGmsh
 {
     
 public:
-    
+
+    // Constructor of ReadGmsh
     ReadGmsh() : fMaterialDataVec(3)
     {
         
     }
-    /// reads the mesh contained in the file and fill the geometric mesh
+    // Reads the mesh contained in the file and fill the geometric mesh
     void Read(GeoMesh &gmesh, const std::string &filename);
     
 protected:
