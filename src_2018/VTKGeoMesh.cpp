@@ -80,7 +80,7 @@ static int GetVTK_ElType(ElementType ElType)
 /**
  * Generate an output of all geomesh to VTK
  */
-void VTKGeoMesh::PrintGMeshVTK(GeoMesh * gmesh, std::string &filename)
+void VTKGeoMesh::PrintGMeshVTK(GeoMesh * gmesh, const std::string &filename)
 {
     std::ofstream file(filename);
     file.clear();
