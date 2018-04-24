@@ -1,9 +1,8 @@
-
 # @file FemSC/CMakeList.txt  -- First file to read for CMake 
 
 cmake_minimum_required (VERSION 2.8.0)
 
-project (FemSC)
+project (FemCourse)
 
 add_subdirectory(headers)
 add_subdirectory(headers2018)
@@ -42,97 +41,9 @@ if(WIN32)
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /W0")
 endif()
 
-#define se biblioteca Armadillo deve ser usada
-option(USING_ARMADILLO "Biblioteca Armadillo deve ser usada neste projeto" OFF)
-
-if(USING_ARMADILLO)
-	find_package( Armadillo REQUIRED NO_MODULE)
-	include_directories(${ARMADILLO_INCLUDE_DIRS})
-	add_definitions(-DARMADILLO)
-endif(USING_ARMADILLO)
-
-
-#define se biblioteca Eigen3 deve ser usada
-option(USING_EIGEN3 "Biblioteca Eigen3 deve ser usada neste projeto" OFF)
-
-if(USING_EIGEN3)
-	find_package( Eigen3 REQUIRED)
-	include_directories(${EIGEN3_INCLUDE_DIR})
-	add_definitions(-DEIGEN3)
-endif(USING_EIGEN3)
-
-
-if(USING_ARMADILLO)
-	link_libraries(${ARMADILLO_LIBRARIES}) 
-endif(USING_ARMADILLO)
-
-
 
 option(USING_FAD "Whether the FAD package will be linked with the library" OFF)
 
 if(USING_FAD)
 	add_subdirectory("Fad")
 endif(USING_FAD)
-
-#enabling use of LOG4CXX library
-option(USING_LOG4CXX "Whether the LOG4CXX library will be linked in" OFF)
-if(USING_LOG4CXX)
-	#Adding a variable to hold this definition
-	set(LOG4CXX LOG4CXX)
-	####add_definitions(-D${LOG4CXX})
-	find_path(LOG4CXX_INCLUDE log4cxx PATHS ${SEARCH_DIRS} ${PROJECT_SOURCE_DIR}/../log4cxx ${PROJECT_SOURCE_DIR}/../log4cxx_src/include ${PROJECT_SOURCE_DIR}/../externallibs/log4cxx_src ${PROJECT_SOURCE_DIR}/../externallibs/log4cxx_src/include)
-	find_library(LOG4CXX_LIB_RELEASE
-		         NAMES liblog4cxx.dylib log4cxx.lib liblog4cxx.so liblog4cxx.a
-				 PATHS ${SEARCH_DIRS} ./../log4cxx_src ./../log4cxx_src/lib ./../externallibs/log4cxx_src ./../externallibs/log4cxx_src/lib ./../externallibs/lib ./../externallibs/lib/Release 
-				)
-	find_library(LOG4CXX_LIB_DEBUG
-				 NAMES liblog4cxx.dylib log4cxx.lib liblog4cxx.so liblog4cxx.a       # Change name here if debug lib has different name.
-				 PATHS ${SEARCH_DIRS} ./../log4cxx_src ./../log4cxx_src/lib ./../externallibs/log4cxx_src ./../externallibs/log4cxx_src/lib ./../externallibs/lib ./../externallibs/lib/Debug
-				)
-	set(LOG4CXX_LIB
-	    debug ${LOG4CXX_LIB_DEBUG}
-	    optimized ${LOG4CXX_LIB_RELEASE}
-	   )	
-	if(LOG4CXX_INCLUDE-NOTFOUND)
-		set (LOG4CXX_INCLUDE "" CACHE PATH "Directory where log4cxx header files can be found")
-	else()
-		include_directories(${LOG4CXX_INCLUDE})
-	endif()
-	
-	if(LOG4CXX_LIB-NOTFOUND)
-		set (LOG4CXX_LIB "" CACHE PATH "Directory where the log4cxx library can be found")
-	endif()
-endif(USING_LOG4CXX)
-
-
-
-
-
-
-option(USING_PZ "Whether the neoPZ package will be linked with the library" OFF)
-
-if(USING_PZ)
-
-	IF (WIN32)
-		# Prevents timespec redefinition problem with Visual Studio 2015
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_STRUCT_TIMESPEC")
-	ELSE (WIN32)
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-narrowing")#this flag is for preventing errors when casting from double to float
-	ENDIF()
-
-
-	set(CMAKE_CXX_STANDARD 11)
-	set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-	IF (WIN32)
-		find_package( PZ PATHS "C:/Arquivos de Programas/PZ" REQUIRED NO_DEFAULT_PATH)
-	ELSE()
-		find_package( PZ REQUIRED )
-	ENDIF (WIN32)
-
-
-	include_directories(${PZ_INCLUDE_DIRS})
- 	link_libraries(pz) 
-
-endif(USING_PZ)
