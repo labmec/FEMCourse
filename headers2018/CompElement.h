@@ -12,6 +12,7 @@
 
 class CompMesh;
 class GeoElement;
+class MathStatement;
 
 class CompElement
 {

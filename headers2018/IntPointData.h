@@ -16,19 +16,21 @@ public:
     
     VecDouble ksi;
     
+    double weight;
+    
     VecDouble phi;
     
     Matrix dphidksi;
     
-    Matrix dphidx;
+    VecDouble x;
+    
+    Matrix gradx;
     
     Matrix axes;
     
-    VecDouble x;
-    
     double detjac;
     
-    Matrix gradx;
+    Matrix dphidx;
     
     VecDouble solution;
     

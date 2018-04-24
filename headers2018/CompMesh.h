@@ -57,9 +57,9 @@ public:
     
     void SetElementVec(const std::vector<CompElement *> &vec);
     
-    void GetDOFVec(const std::vector<DOF> &dofvec);
+    void SetDOFVec(const std::vector<DOF> &dofvec);
     
-    void GetMathVec(const std::vector<MathStatement *> &mathvec);
+    void SetMathVec(const std::vector<MathStatement *> &mathvec);
     
 
 };

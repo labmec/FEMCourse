@@ -26,15 +26,15 @@ public:
     
     ~DOF();
     
-    int64_t FirstEquation();
+    int64_t GetFirstEquation();
     
     void SetFirstEquation(int64_t first);
     
     void SetNShapeState(int NShape, int NState);
     
-    int NShape() const;
+    int GetNShape() const;
     
-    int NState() const;
+    int GetNState() const;
     
     
 };

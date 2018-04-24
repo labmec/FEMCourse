@@ -24,7 +24,7 @@ public:
     
     virtual ~MathStatement();
     
-    virtual MathStatement *Duplicate();
+    virtual MathStatement *Clone() = 0;
     
     virtual int NState() const = 0;
     

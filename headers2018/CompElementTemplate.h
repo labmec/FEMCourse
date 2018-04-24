@@ -30,7 +30,7 @@ public:
     
     CompElementTemplate &operator=(const CompElementTemplate &);
     
-    ~CompElementTemplate();
+    virtual ~CompElementTemplate();
     
     virtual CompElementTemplate *Clone() const;
     
