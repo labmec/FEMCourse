@@ -9,41 +9,60 @@
 #define CompElementTemplate_h
 
 #include "CompElement.h"
+#include "IntRule.h"
+#include "Topology1d.h"
+#include "TopologyQuad.h"
+#include "TopologyTriangle.h"
+#include "TopologyTetrahedron.h"
+#include "Shape1d.h"
+#include "ShapeQuad.h"
+#include "ShapeTetrahedron.h"
+#include "ShapeTriangle.h"
 #include "DOF.h"
 
 template<class Shape>
 class CompElementTemplate : public CompElement
 {
 
+    // Vector with degrees of freedom indices
     std::vector<int64_t> dofindexes;
     
-    Shape::LocIntRule intrule;
-    
+    // Integration rule object
+    typename Shape::LocIntRule intrule;
     
 public:
     
+    // Default constructor of CompElementTemplate
     CompElementTemplate();
     
-    CompElementTemplate(int64_t index, GeoElement *geo)
+    // Constructor of CompElementTemplate
+    CompElementTemplate(int64_t index, GeoElement *geo);
     
+    // Copy constructor of CompElementTemplate
     CompElementTemplate(const CompElementTemplate &);
     
+    // Operator of copy
     CompElementTemplate &operator=(const CompElementTemplate &);
     
+    // Destructor of CompElementTemplate
     virtual ~CompElementTemplate();
     
-    virtual CompElementTemplate *Clone() const;
+    // Method for creating a copy of the element
+    virtual CompElement *Clone() const;
     
+    // Compute shape functions set at point x
     virtual void ShapeFunctions(const VecDouble &intpoint, VecDouble &phi, Matrix &dphi);
     
+    // Return the number of shape functions
     virtual int NShapeFunctions();
 
+    // Return the number of degree of freedom
     virtual int NDOF();
     
-    /// returns the number of shape functions stored in the DOF data structure
+    // Return the number of shape functions stored in the DOF data structure
     virtual int NShapeFunctions(int doflocindex);
     
-    /// uses the Shape template class to compute the number of shape functions
+    // Use the Shape template class to compute the number of shape functions
     virtual int ComputeNShapeFunctions(int doflocindex);
     
 };
