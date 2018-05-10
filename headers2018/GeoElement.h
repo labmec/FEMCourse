@@ -35,7 +35,7 @@ public:
     GeoElement();
     
     // Constructor of GeoElement
-    GeoElement(int materialid, GeoMesh *mesh) : GMesh(mesh), MaterialId(materialid)
+    GeoElement(int materialid, GeoMesh *mesh, int index) : GMesh(mesh), MaterialId(materialid), Index(index)
     {
         
     }

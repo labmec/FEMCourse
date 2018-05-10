@@ -22,7 +22,7 @@ protected:
 public:
     
     // Constructor of GeoElementTemplate
-    GeoElementTemplate(const VecInt &nodeindices, int materialid, GeoMesh *gmesh);
+    GeoElementTemplate(const VecInt &nodeindices, int materialid, GeoMesh *gmesh, int index);
     
     // Copy constructor of GeoElementTemplate
     GeoElementTemplate(const GeoElementTemplate &copy);
