@@ -35,7 +35,7 @@ public:
     void OptimizeBandwidth();
     
     /// Compute the global stiffness matrix and right hand side
-    Compute(Matrix &globmat, Matrix &rhs);
+    void Compute(Matrix &globmat, Matrix &rhs);
     
 };
 #endif /* Assemble_h */

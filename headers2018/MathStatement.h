@@ -10,6 +10,7 @@
 
 #include "DataTypes.h"
 #include "IntPointData.h"
+#include <functional>
 
 class MathStatement
 {

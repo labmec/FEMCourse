@@ -17,6 +17,9 @@ class MathStatement;
 
 class CompMesh
 {
+    /// pointer to the geometric mesh
+    GeoMesh *geomesh;
+    
     // Vector with computational elements objects
     std::vector<CompElement *> compelements;
     
@@ -34,11 +37,18 @@ public:
     // Default constructor of CompMesh
     CompMesh();
     
+    // Default constructor of CompMesh
+    CompMesh(GeoMesh *gmesh);
+    
     // Copy constructor of CompMesh
     CompMesh(const CompMesh &copy);
     
     // Destructor of CompMesh
     ~CompMesh();
+    
+    GeoMesh *GetGeoMesh() const ;
+    
+    void SetGeoMesh(GeoMesh *gmesh);
     
     // Set the number of computational elements on the grid
     void SetNumberElement(int64_t nelem);
@@ -84,6 +94,9 @@ public:
     
     // Set the vector with math statement objects
     void SetMathVec(const std::vector<MathStatement *> &mathvec);
+    
+    // will create the computational elements
+    void AutoBuild();
     
     // Initialize the datastructure FirstEquation of the DOF objects
     void Resequence();
