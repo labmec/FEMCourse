@@ -8,12 +8,14 @@
 #ifndef CompMesh_h
 #define CompMesh_h
 
+#include "DOF.h"
+#include "DataTypes.h"
+
 class CompElement;
 
 class MathStatement;
 
-#include "DOF.h"
-#include "DataTypes.h"
+class GeoMesh;
 
 class CompMesh
 {
@@ -32,6 +34,9 @@ class CompMesh
     // Vector with solution coeficients
     std::vector<double> solution;
     
+    /** @brief Default order for all elements of this mesh */
+    int64_t DefaultOrder = 0;
+    
 public:
     
     // Default constructor of CompMesh
@@ -46,7 +51,7 @@ public:
     // Destructor of CompMesh
     ~CompMesh();
     
-    GeoMesh *GetGeoMesh() const ;
+    GeoMesh *GetGeoMesh() const;
     
     void SetGeoMesh(GeoMesh *gmesh);
     
@@ -67,6 +72,18 @@ public:
     
     // Set the math statement object associated to an index
     void SetMathStatement(int index, MathStatement *math);
+    
+    // Set Default Order
+    void SetDefaultOrder( int order )
+    {
+        DefaultOrder = order;
+    }
+
+    // Get Default Order
+    int GetDefaultOrder()
+    {
+        return DefaultOrder;
+    }
     
     // Return the degree of freedom index
     DOF &GetDOF(int64_t dofindex);
@@ -104,7 +121,7 @@ public:
     // Initialize the datastructure FirstEquation of the DOF objects in the order specified by the vector
     void Resequence(VecInt &DOFindices);
     
-    std::vector<double> &Solution() const;
+    std::vector<double> &Solution();
     
     void LoadSolution(std::vector<double> &Sol);
     

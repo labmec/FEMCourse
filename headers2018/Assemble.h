@@ -10,6 +10,7 @@
 
 #include "DataTypes.h"
 #include "CompMesh.h"
+#include "PostProcess.h"
 
 // class geared towards the assembly of the global system of equations
 class Assemble
@@ -39,3 +40,4 @@ public:
     
 };
 #endif /* Assemble_h */
+
