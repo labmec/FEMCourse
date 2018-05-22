@@ -12,6 +12,7 @@
 #include "TopologyQuad.h"
 #include "TopologyTetrahedron.h"
 #include "DataTypes.h"
+#include "Analysis.h"
 
 using std::cout;
 using std::endl;

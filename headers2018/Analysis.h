@@ -8,6 +8,12 @@
 #ifndef Analysis_h
 #define Analysis_h
 
+#include "DataTypes.h"
+class CompMesh;
+class PostProcess;
+#include <string>
+
+
 class Analysis
 {
     CompMesh *cmesh;
