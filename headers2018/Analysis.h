@@ -16,6 +16,8 @@ class PostProcess;
 
 class Analysis
 {
+protected:
+    
     CompMesh *cmesh;
     
     Matrix Solution;
@@ -23,6 +25,8 @@ class Analysis
     Matrix GlobalSystem;
     
     Matrix RightHandSide;
+    
+public:
     
     Analysis();
     
