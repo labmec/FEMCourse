@@ -112,8 +112,11 @@ public:
     // Set number of DOF
     virtual void SetNDOF(int64_t ndof) = 0;
     
-    // Se DOF index in vector position i
+    // Set DOF index in vector position i
     virtual void SetDOFIndex(int i, int64_t dofindex) = 0;
+    
+    // Get DOF index in vector position i
+    virtual int64_t GetDOFIndex(int i) = 0;
     
     // Return the number of degree of freedom
     virtual int NDOF() const = 0;
