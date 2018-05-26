@@ -106,6 +106,9 @@ public:
     // for dsol the row indicates the direction, the column indicates the state variable
     virtual void Solution(const VecDouble &intpoint, VecDouble &sol, TMatrix &dsol) const;
     
+    /// Compute the error of the finite element approximation
+    double ComputeError(std::function<void(const VecDouble &co, VecDouble &sol, Matrix &dsol)> &exact,  VecDouble &errors);
+    
     // Return the number of shape functions
     virtual int NShapeFunctions() const = 0;
     
