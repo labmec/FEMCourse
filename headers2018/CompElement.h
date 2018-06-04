@@ -12,7 +12,7 @@
 #include "IntRule.h"
 #include "IntPointData.h"
 #include "PostProcess.h"
-
+#include <functional>
 
 class CompMesh;
 class GeoElement;
