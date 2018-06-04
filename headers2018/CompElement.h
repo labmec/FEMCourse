@@ -115,6 +115,9 @@ public:
     // Get Multiplying Coeficients
     virtual void GetMultiplyingCoeficients(VecDouble &coefs) const = 0;
     
+    /// Compute the error of the finite element approximation
+    double ComputeError(std::function<void(const VecDouble &co, VecDouble &sol, Matrix &dsol)> &exact,  VecDouble &errors);
+    
     // Return the number of shape functions
     virtual int NShapeFunctions() const = 0;
     
